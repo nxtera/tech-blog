@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Work smarter not harder",
+    "content": "The secret is all about utilising short bursts of productivitiy with minimal distractions rather than spending hours and hours completing one task."
+  },
+  {
+    "title": "Automation is key",
+    "content": "I have found a couple of great tools to help reduce the need of repetitive tasks. One is called Zapier and the other is TextExpander."
+  },
+  {
+    "title": "Debugging tip",
+    "content": "Use breakpoints to set multiple barriers to rectify source of errors."
+  },
+  {
+    "title": "Increase Javascript performance",
+    "content": "To boost performance instead of using document.getElementById() cache your selections to some variables"
+  },
+  {
+    "title": "if/else statements are trash",
+    "content": "Switch cases are the way to go!"
+  },
+  {
+    "title": "Quick way to empty an array",
+    "content": "Use 'array.length=0'"
+  },
+  {
+    "title": "Why learn jquery??",
+    "content": "Seriously, what's the point when JavaScript already exists!"
+  }
+]

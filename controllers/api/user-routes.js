@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Comment } = require("../../models");
+const { User, Comment, Thought } = require("../../models");
 
 
 // Find all users
@@ -10,6 +10,9 @@ router.get("/", (req, res) => {
         {
           model: Comment,
         },
+        {
+          model: Thought
+        }
       ],
     })
       .then((dbUserData) => res.json(dbUserData))
@@ -30,6 +33,9 @@ router.get("/:id", (req, res) => {
         {
           model: Comment,
         },
+        {
+          model: Thought
+        }
       ],
     })
       .then((dbUserData) => {
@@ -65,3 +71,6 @@ router.post("/", (req, res) => {
         res.status(500).json(err);
       });
   });
+
+
+  module.exports = router;

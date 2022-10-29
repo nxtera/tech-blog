@@ -22,7 +22,7 @@ Thought.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "User",
+        model: "user",
         key: "id",
       },
     },
@@ -31,7 +31,7 @@ Thought.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Thought',
+    modelName: 'thought',
   }
 );
 
