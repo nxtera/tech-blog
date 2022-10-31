@@ -3,38 +3,38 @@ const { Thought, Comment, User } = require("../models/");
 
 
 // Render homepage with all thoughts
-router.get("/home", (req, res) => {
-  console.log("hello")
-
-  Thought.findAll({
-    // attributes: ["id", "title", "content", "created_at"],
-    include: [
-      {
-        model: Comment,
-        // attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
+router.get("/", async (req, res) => {
+  try {
+    console.log("hello")
+    const dbThoughtData = await Thought.findAll({
+      // attributes: ["id", "title", "content", "created_at"],
+      include: [
+        {
+          model: Comment,
+          // attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+        {
           model: User,
           attributes: ["username"],
         },
-      },
-      {
-        model: User,
-        attributes: ["username"],
-      },
-    ],
-  })
-    .then((dbThoughtData) => {
+      ],
+    })
+
       const thoughts = dbThoughtData.map((thought) =>
         thought.get({ plain: true })
       );
       console.log("userdata", thoughts);
       res.render("homepage", { thoughts, loggedIn: req.session.loggedIn });
-      // res.render("homepage")
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+      // res.render("homepage"
+
+  } catch(err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 
 });
 
