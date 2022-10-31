@@ -1,0 +1,13 @@
+
+
+<div class="wrapper">
+{{#each thoughts as |thought|}}
+<div class="thoughtCard">
+<h1><a href ="/thought/{{thought.id}}">{{thought.title}}</a></h1>
+<div class ="content">
+<h3>{{thought.content}}</h3>
+<h4>{{thought.user.username}}</h4>
+</div>
+</div>
+ {{/each}}
+</div>

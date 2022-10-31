@@ -1,29 +1,17 @@
 const router = require("express").Router();
 const { Thought, Comment, User } = require("../models/");
 
-// get request for all thoughts
-// router.get('/', async (req, res) => {
-//     try {
-//       const thoughtData = await Thought.findAll({
-//         include: [User],
-//       });
 
-//       const thoughts = thoughtData.map((thought) => thought.get({ plain: true }));
+// Render homepage with all thoughts
+router.get("/home", (req, res) => {
+  console.log("hello")
 
-//       res.render('all-thoughts', { thoughts });
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
-
-// get request for all thoughts
-router.get("/", (req, res) => {
   Thought.findAll({
-    attributes: ["id", "title", "content", "created_at"],
+    // attributes: ["id", "title", "content", "created_at"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        // attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -39,18 +27,20 @@ router.get("/", (req, res) => {
       const thoughts = dbThoughtData.map((thought) =>
         thought.get({ plain: true })
       );
-      console.log(thoughts);
+      console.log("userdata", thoughts);
       res.render("homepage", { thoughts, loggedIn: req.session.loggedIn });
+      // res.render("homepage")
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
+
 });
 
 // get request for single thought by id
 router.get("/thought/:id", (req, res) => {
-  Post.findOne({
+  Thought.findOne({
     where: {
       id: req.params.id,
     },
@@ -58,21 +48,21 @@ router.get("/thought/:id", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: [
-          "id",
-          "comment_text",
-          "thought_id",
-          "user_id",
-          "created_at",
-        ],
+        // attributes: [
+        //   "id",
+        //   "comment_text",
+        //   "thought_id",
+        //   "user_id",
+        //   "created_at",
+        // ],
         include: {
           model: User,
-          attributes: ["username"],
+          // attributes: ["username"],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        // attributes: ["username"],
       },
     ],
   })
@@ -92,6 +82,28 @@ router.get("/thought/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
+
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("login");
+});
+
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("signup");
+});
+
+module.exports = router;
+
 
 //   // get request for single thought by id
 // router.get('/thought/:id', async (req, res) => {
@@ -118,22 +130,17 @@ router.get("/thought/:id", (req, res) => {
 //     }
 //   });
 
-router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
+// get request for all thoughts
+// router.get('/', async (req, res) => {
+//     try {
+//       const thoughtData = await Thought.findAll({
+//         include: [User],
+//       });
 
-  res.render("login");
-});
+//       const thoughts = thoughtData.map((thought) => thought.get({ plain: true }));
 
-router.get("/signup", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
-
-  res.render("signup");
-});
-
-module.exports = router;
+//       res.render('all-thoughts', { thoughts });
+//     } catch (err) {
+//       res.status(500).json(err);
+//     }
+//   });
