@@ -1,0 +1,15 @@
+<div class="wrapper">
+<div class="LogOutArea">
+<h2>{{username}}</h2>
+<button class="btn btn-primary signUpButton" id="logOut">Log Out</button>
+</div>
+{{#each thoughts as |thought|}}
+<div class="thoughtCard">
+<h1><a href ="/dashboard/edit/{{thought.id}}">{{thought.title}}</a></h1>
+<div class ="content">
+<h3>{{thought.content}}</h3>
+</div>
+</div>
+ {{/each}}
+ </div>
+</div>
