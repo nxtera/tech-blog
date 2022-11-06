@@ -3,6 +3,8 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
+const helpers = require('./utils/helpers');
+
 
 const Handlebars = require("handlebars");
 const {
@@ -22,6 +24,7 @@ const hbs = exphbs.create({
     allowProtoPropertiesByDefault: true,
     allowProtoMethodsByDefault: true,
   },
+  helpers
 });
 
 const sess = {

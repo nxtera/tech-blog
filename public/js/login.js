@@ -1,10 +1,7 @@
-
 async function logMeIn(event) {
   event.preventDefault();
-
   const password = document.querySelector("#passwordLogin").value.trim();
   const username = document.querySelector("#usernameLogin").value.trim();
-
   if (username && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
@@ -14,8 +11,6 @@ async function logMeIn(event) {
       }),
       headers: { "Content-Type": "application/json" },
     });
-
-    console.log(response);
 
     if (response.ok) {
       console.log("inside response ok");
@@ -27,7 +22,3 @@ async function logMeIn(event) {
 }
 
 document.querySelector("#logInBtn").addEventListener("click", logMeIn);
-
-// myModal.addEventListener("shown.bs.modal", function () {
-//   myInput.focus();
-// })

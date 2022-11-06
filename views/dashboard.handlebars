@@ -1,15 +1,28 @@
 <div class="wrapper">
-<div class="LogOutArea">
-<h2>{{username}}</h2>
-<button class="btn btn-primary signUpButton" id="logOut">Log Out</button>
+    <div class="LogOutArea">
+        <h2>*{{username}}*
+            <button id="logOutBtn" onclick="logOut(event)">Log Out
+            </button>
+        </h2>
+    </div>
+    {{#each thoughts as |thought|}}
+    <div class="thoughtCard">
+        <h1><a href="/dashboard/edit/{{thought.id}}">{{thought.title}}</a></h1>
+        <div class="content">
+            <h3>{{thought.content}}</h3>
+        </div>
+        <div class="deleteArea">
+            <button class="deleteBtn" onclick="deleteThought(event)" data-id="{{id}}">Delete Thought</button>
+        </div>
+    </div>
+    {{/each}}
+    <div id="newThoughtArea">
+        <button id="newThoughtBtn" onclick="location.href='/dashboard/newthought'">New Thought
+        </button>
+    </div>
 </div>
-{{#each thoughts as |thought|}}
-<div class="thoughtCard">
-<h1><a href ="/dashboard/edit/{{thought.id}}">{{thought.title}}</a></h1>
-<div class ="content">
-<h3>{{thought.content}}</h3>
+
 </div>
-</div>
- {{/each}}
- </div>
-</div>
+
+
+<script src="/js/dashboard.js"></script>

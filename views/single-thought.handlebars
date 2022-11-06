@@ -1,8 +1,26 @@
-
 <div class="wrapper">
-<div class="thoughtCard" style="width: 50rem;">
-<h1><a href ="/thought/{{thought.id}}">{{thought.title}}</a></h1>
-<h3>{{thought.content}}</h3>
-<h4>{{thought.user.username}}</h4>
+  <div class="thoughtCard" style="width: 50rem;">
+    <h1><a href="/thought/{{thought.id}}">{{thought.title}}</a></h1>
+    <div class="content">
+      <h3>{{thought.content}}</h3>
+      <h4>*{{thought.user.username}}*</h4>
+      <h5>-- {{format_date thought.createdAt}} --</h5>
+    </div>
+  </div>
+
+  {{#each thought.comments as |comment|}}
+  <div class="comments">
+    <h3>{{comment_text}}</h3>
+    <h4>*{{comment.user.username}}*</h4>
+    <h5>-- {{format_date comment.createdAt}} --</h5>
+  </div>
+  {{/each}}
+
+  <div class="newComment">
+    <textarea id="commentText" name="thoughtText" rows="3" cols="50" placeholder="Add a comment..."></textarea>
+    <button id="submitCommentBtn" onclick="sendNewComment(event)">Submit Comment
+    </button>
+  </div>
 </div>
-</div>
+
+<script src="/js/single-thought.js"></script>

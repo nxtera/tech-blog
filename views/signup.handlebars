@@ -1,29 +1,19 @@
 {{!username signup}}
-<div class ="loginArea">
-<div class="username-login">
-  <form id="SignUpForm">
-  <label for="username" class="credentials-form">Create Username</label>
-  <input
-    type="text"
-    class="credentials-input"
-    id="usernameSignup"
-    placeholder="..."
-  />
-</div>
-{{!password signup}}
-<div class="password-login">
-  <label for="password" class="credentials-form">Create Password</label>
-  <input
-    type="password"
-    class="credentials-input"
-    id="passwordSignup"
-    placeholder="..."
-  />
-</div>
+<div class="loginArea">
+  <div class="username-login">
+    <form id="SignUpForm">
+      <label for="username" class="credentials-form">Create Username</label>
+      <input type="text" class="credentials-input" id="usernameSignup" placeholder="..." />
+  </div>
+  {{!password signup}}
+  <div class="password-login">
+    <label for="password" class="credentials-form">Create Password</label>
+    <input type="password" class="credentials-input" id="passwordSignup" placeholder="..." />
+  </div>
 
-<div class="submitArea">
-  <button class="submit-btn" id="SignInBtn">Sign Up</button>
-</div>
-</form>
+  <div class="submitArea">
+    <button class="submit-btn" id="SignInBtn">Sign Up</button>
+  </div>
+  </form>
 </div>
 <script src="/js/signup.js"></script>

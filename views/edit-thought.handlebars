@@ -1,25 +1,20 @@
+<!-- Render thought to be edited -->
 <div class="thoughtCard">
-<h1>{{thought.title}}</h1>
-<div class ="content">
-<h3>{{thought.content}}</h3>
-</div>
+  <h1>{{thought.title}}</h1>
+  <div class="content">
+    <h3>{{thought.content}}</h3>
+  </div>
 </div>
 
+<!-- Render input fields to input new thought data -->
 <div class="updateThought">
-<h4>Enter New Thought Title: 
-    <input
-        type="text"
-        class="newTitle"
-        
-        placeholder="{{thought.title}}"
-      />
-      </h4> 
-      <h4> Enter New Thought Text:
-        <input
-        type="text"
-        class="newText"
-        placeholder="{{thought.content}}"
-      />
-      </h4>
-<button class="editThoughtBtn" id="logOut">Edit Thought</button>
+  <h4>Enter New Thought Title:</h4>
+  <input type="text" id="newTitle" value="{{thought.title}}" />
+  <h4>Enter New Thought Text:</h4>
+  <textarea id="newText" name="newText" rows="3" cols="50">
+    {{thought.content}}
+  </textarea>
+  <button class="editThoughtBtn" id="EditFormBtn" onclick="sendEditedThought(event)">Edit Thought
+  </button>
 </div>
+<script src="/js/edit-thought.js"></script>
