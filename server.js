@@ -12,7 +12,6 @@ const {
 } = require("@handlebars/allow-prototype-access");
 
 const sequelize = require("./config/connection");
-// const { ConnectionError } = require("sequelize");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const app = express();
